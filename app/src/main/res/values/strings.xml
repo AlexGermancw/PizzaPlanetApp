@@ -2,4 +2,14 @@
     <string name="app_name">PizzaPlanetApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user">email@email.com</string>
+    <string name="password">contraseña</string>
+    <string name="repeat_password">repetir la contraseña</string>
+    <string name="login">Iniciar Sessión</string>
+    <string name="recover_password">Recuperar contraseña</string>
+    <string name="signup">Registrarse</string>
+    <string name="send">Send</string>
+    <string name="loading_tasks">Loading Tasks</string>
+    <string name="no_tasks">No task found</string>
+
 </resources>
