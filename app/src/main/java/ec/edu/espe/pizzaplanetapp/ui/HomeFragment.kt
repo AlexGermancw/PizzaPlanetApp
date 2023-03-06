@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
-        //initClick()
+        initClick()
     }
 
     override fun onDestroyView() {
@@ -37,11 +37,13 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    /*private fun initClick(){
-        binding.btnLogout.setOnClickListener{
-            loguotApp()
+    private fun initClick(){
+        binding.btnIngredient.setOnClickListener {
+            val action = HomeFragmentDirections
+                .actionHomeFragmentToFormIngredientFragment(null)
+            findNavController().navigate(action)
         }
-    }*/
+    }
 
     /*private fun loguotApp(){
         auth.signOut()

@@ -53,5 +53,19 @@
         android:id="@+id/homeFragment"
         android:name="ec.edu.espe.pizzaplanetapp.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_formIngredientFragment"
+            app:destination="@id/formIngredientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formIngredientFragment"
+        android:name="ec.edu.espe.pizzaplanetapp.form.FormIngredientFragment"
+        android:label="fragment_form_ingredient"
+        tools:layout="@layout/fragment_form_ingredient" >
+        <argument
+            android:name="ingredient"
+            app:argType="ec.edu.espe.pizzaplanetapp.model.Ingredient"
+            app:nullable="true" />
+    </fragment>
 </navigation>
