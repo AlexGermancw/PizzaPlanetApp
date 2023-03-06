@@ -52,12 +52,12 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_button"
             android:text="@string/login"
-            android:textColor="@color/white"
+            android:textColor="@color/color_default"
             app:backgroundTint="@null" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_marginTop="20dp">
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp"
                 android:text="@string/signup"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:paddingVertical="10dp"
                 android:text="@string/recover_password"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +96,7 @@
             android:layout_marginTop="10dp"
             android:visibility="invisible"
             tools:visibility="visible"
-            android:indeterminateTint="@color/color_default"
+            android:indeterminateTint="@color/white"
             android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>

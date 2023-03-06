@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -33,7 +34,7 @@ class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = Firebase.auth
-        //initClick()
+        initClick()
     }
 
     override fun onDestroyView() {
@@ -46,11 +47,11 @@ class LoginFragment : BaseFragment() {
         binding.btnLogin.setOnClickListener { validateData() }
 
         binding.btnSignup.setOnClickListener{
-            //findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
 
         binding.btnRecover.setOnClickListener{
-            //findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_recoverAccountFragment)
         }
     }
 
@@ -77,7 +78,7 @@ class LoginFragment : BaseFragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    //findNavController().navigate(R.id.action_global_homeFragment)
+                    findNavController().navigate(R.id.action_global_homeFragment)
                 } else {
                     Toast.makeText(
                         requireContext(),
