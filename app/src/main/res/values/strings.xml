@@ -13,6 +13,7 @@
     <string name="state">Estado</string>
     <string name="user">email@email.com</string>
     <string name="next">Siguiente</string>
+    <string name="number_decimal">100.00</string>
 
     <!---Ingredient-->
 
@@ -23,10 +24,20 @@
     <string name="state_ingredient">Estado Ingrediente</string>
     <string name="description_ingredient">Descripcion Ingrediente</string>
     <string name="unit_value_ingredient">Valor Ingrediente $</string>
-    <string name="number_decimal">100.00</string>
     <string-array name="state_options">
         <item>Activo</item>
         <item>Inactivo</item>
     </string-array>
+
+    <!--- Size -->
+
+    <string name="add_size">Agregar Tamaño</string>
+    <string name="edit_size">Editar Tamaño</string>
+    <string name="select_size">Seleccionar Tamaño</string>
+    <string name="name_size">Nombre Tamaño</string>
+    <string name="state_size">Estado Tamaño</string>
+    <string name="description_size">Descripcion Tamaño</string>
+    <string name="unit_value_size">Valor Tamaño $</string>
+    <string name="no_size">No existen Tamaños</string>
 
 </resources>

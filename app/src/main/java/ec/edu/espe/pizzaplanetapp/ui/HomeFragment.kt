@@ -43,6 +43,18 @@ class HomeFragment : Fragment() {
                 .actionHomeFragmentToFormIngredientFragment(null)
             findNavController().navigate(action)
         }
+
+        binding.btnSize.setOnClickListener {
+            val action = HomeFragmentDirections
+                .actionHomeFragmentToFormSizeFragment(null)
+            findNavController().navigate(action)
+        }
+
+        binding.btnPersonalizar.setOnClickListener {
+            val action = HomeFragmentDirections
+                .actionHomeFragmentToCustomizeSizeFragment()
+            findNavController().navigate(action)
+        }
     }
 
     /*private fun loguotApp(){

@@ -57,10 +57,16 @@
         <action
             android:id="@+id/action_homeFragment_to_formIngredientFragment"
             app:destination="@id/formIngredientFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_formSizeFragment"
+            app:destination="@id/formSizeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_customizeSizeFragment"
+            app:destination="@id/customizeSizeFragment" />
     </fragment>
     <fragment
         android:id="@+id/formIngredientFragment"
-        android:name="ec.edu.espe.pizzaplanetapp.form.FormIngredientFragment"
+        android:name="ec.edu.espe.pizzaplanetapp.ui.form.FormIngredientFragment"
         android:label="fragment_form_ingredient"
         tools:layout="@layout/fragment_form_ingredient" >
         <argument
@@ -68,4 +74,19 @@
             app:argType="ec.edu.espe.pizzaplanetapp.model.Ingredient"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/formSizeFragment"
+        android:name="ec.edu.espe.pizzaplanetapp.ui.form.FormSizeFragment"
+        android:label="fragment_form_size"
+        tools:layout="@layout/fragment_form_size" >
+        <argument
+            android:name="size"
+            app:argType="ec.edu.espe.pizzaplanetapp.model.Size"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/customizeSizeFragment"
+        android:name="ec.edu.espe.pizzaplanetapp.ui.customizer.CustomizeSizeFragment"
+        android:label="fragment_customize_size"
+        tools:layout="@layout/fragment_customize_size" />
 </navigation>

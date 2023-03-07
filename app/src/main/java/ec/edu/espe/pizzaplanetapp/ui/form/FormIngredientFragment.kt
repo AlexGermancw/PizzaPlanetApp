@@ -1,4 +1,4 @@
-package ec.edu.espe.pizzaplanetapp.form
+package ec.edu.espe.pizzaplanetapp.ui.form
 
 import android.os.Bundle
 import android.util.Log
@@ -52,15 +52,6 @@ class FormIngredientFragment : BaseFragment() {
 
     private  fun initListeners(){
         binding.btnSave.setOnClickListener { validateData() }
-
-        /*binding.radioGroup.setOnCheckedChangeListener{ _, id ->
-            statusTask = when(id){
-                R.id.rbTodo -> 0
-                R.id.rbDoing -> 1
-                else -> 2
-            }
-
-        }*/
     }
 
     private fun validateData(){
@@ -79,8 +70,6 @@ class FormIngredientFragment : BaseFragment() {
                 state = null
             }
         }
-
-
 
         if(name.isNotEmpty()){
             if (unitValue.isNotEmpty()){
@@ -123,22 +112,6 @@ class FormIngredientFragment : BaseFragment() {
 
     }
 
-    /*private fun setStatus(){
-        binding.radioGroup.check(
-            when(task.status){
-                0-> {
-                    R.id.rbTodo
-                }
-                1-> {
-                    R.id.rbDoing
-                }
-                else -> {
-                    R.id.rbDone
-                }
-            }
-        )
-    }*/
-
     private fun saveIngredient(){
         FirebaseHelper
             .getDataBase()
@@ -149,21 +122,20 @@ class FormIngredientFragment : BaseFragment() {
                 if(task.isSuccessful){
                     if(newIngredient){// add task
                         findNavController().popBackStack()
-                        Toast.makeText(requireContext(), "Task saved successfully", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "Guardado exitosamente", Toast.LENGTH_LONG).show()
                     }
                     else{ // Edit task
                         binding.progressBar.isVisible = false
-                        Toast.makeText(requireContext(), "Task updated with satisfaction", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "Actualizado exitosamente", Toast.LENGTH_LONG).show()
                     }
                 }
                 else{
-                    Toast.makeText(requireContext(), "Failed to save task", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "Error al guardar", Toast.LENGTH_LONG).show()
                 }
             }.addOnFailureListener{
                 binding.progressBar.isVisible = false
-                Toast.makeText(requireContext(), "Failed to save task", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Error al guardar", Toast.LENGTH_LONG).show()
             }
-
     }
 
 }
