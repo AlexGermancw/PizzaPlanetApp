@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import ec.edu.espe.pizzaplanetapp.R
 import ec.edu.espe.pizzaplanetapp.databinding.ItemIngredientAdapterBinding
+import ec.edu.espe.pizzaplanetapp.databinding.ItemSizeAdapterBinding
 import ec.edu.espe.pizzaplanetapp.model.Size
 
 class SizeShopAdapter (
@@ -17,10 +18,13 @@ class SizeShopAdapter (
 ) : RecyclerView.Adapter<SizeShopAdapter.MyViewHolder>() {
 
     private var selectOption: Boolean = true
+    private var valueSize:Double = 0.0
+
+    private var onItemClickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemIngredientAdapterBinding.inflate(
+            ItemSizeAdapterBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -29,7 +33,6 @@ class SizeShopAdapter (
     }
 
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
-
         viewHolder.binding.lblId.text = sizeList.get(position).id
         //viewHolder.binding.iconImageView.setImageResource() //imagen
         viewHolder.binding.lblName.text = sizeList.get(position).name
@@ -42,6 +45,8 @@ class SizeShopAdapter (
                 viewHolder.binding.lblSelect.text = "1"
                 val color = ContextCompat.getColor(context, R.color.color_select)
                 viewHolder.binding.item.setBackgroundColor(color)
+                valueSize = sizeList.get(position).unitValue
+                onItemClickListener?.onItemClick(valueSize)
                 selectOption = false
             }
             if(select == "1" && !selectOption){
@@ -50,6 +55,8 @@ class SizeShopAdapter (
                 viewHolder.binding.lblSelect.text = "0"
                 val color = ContextCompat.getColor(context, R.color.white)
                 viewHolder.binding.item.setBackgroundColor(color)
+                valueSize = 0.00
+                onItemClickListener?.onItemClick(valueSize)
                 selectOption = true
             }
         }
@@ -63,7 +70,17 @@ class SizeShopAdapter (
         return sizeList.size
     }
 
-    inner class MyViewHolder(val binding: ItemIngredientAdapterBinding) :
+
+
+    interface OnItemClickListener {
+        fun onItemClick(valueSize: Double)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
+    }
+
+    inner class MyViewHolder(val binding: ItemSizeAdapterBinding) :
         RecyclerView.ViewHolder(binding.root)
 
 }

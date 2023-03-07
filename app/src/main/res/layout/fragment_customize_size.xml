@@ -27,6 +27,16 @@
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
                 android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/txtTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="@string/number_decimal"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:textSize="20sp"/>
         </Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 

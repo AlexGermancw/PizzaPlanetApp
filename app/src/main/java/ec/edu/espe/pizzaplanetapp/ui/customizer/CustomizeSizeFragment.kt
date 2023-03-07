@@ -1,15 +1,18 @@
 package ec.edu.espe.pizzaplanetapp.ui.customizer
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isNotEmpty
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -21,7 +24,7 @@ import ec.edu.espe.pizzaplanetapp.ui.HomeFragmentDirections
 import ec.edu.espe.pizzaplanetapp.ui.adapter.SizeShopAdapter
 
 
-class CustomizeSizeFragment : Fragment() {
+class CustomizeSizeFragment : Fragment(), SizeShopAdapter.OnItemClickListener {
 
     private var _binding: FragmentCustomizeSizeBinding? = null
     private val binding get() = _binding!!
@@ -29,6 +32,7 @@ class CustomizeSizeFragment : Fragment() {
     private lateinit var sizeAdapter: SizeShopAdapter
 
     private val sizeList = mutableListOf<Size>()
+    private lateinit var sizeSelect: Size
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,9 +51,14 @@ class CustomizeSizeFragment : Fragment() {
 
     private fun initClick(){
         binding.btnNext.setOnClickListener {
-            val action = HomeFragmentDirections
-                .actionHomeFragmentToCustomizeSizeFragment()
-            findNavController().navigate(action)
+            selectSize()
+            if(::sizeSelect.isInitialized){
+                val action = CustomizeSizeFragmentDirections
+                    .actionCustomizeSizeFragmentToCustomizeIngredientFragment(sizeSelect)
+                findNavController().navigate(action)
+            }else{
+                Toast.makeText(requireContext(), "Seleccione un Tamaño", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -89,6 +98,7 @@ class CustomizeSizeFragment : Fragment() {
         binding.rvSize.layoutManager = LinearLayoutManager(requireContext())
         binding.rvSize.setHasFixedSize(true)
         sizeAdapter = SizeShopAdapter(requireContext(), sizeList)
+        sizeAdapter.setOnItemClickListener(this)
         binding.rvSize.adapter = sizeAdapter
         binding.rvSize.layoutManager = GridLayoutManager(requireContext(), 2)
 
@@ -100,6 +110,26 @@ class CustomizeSizeFragment : Fragment() {
         }else{
             ""
         }
+    }
+
+    private fun selectSize(){
+
+        val recyclerView = binding.rvSize
+        val adapter = recyclerView.adapter as SizeShopAdapter
+        val count = adapter.itemCount
+        val a =""
+        for (i in 0 until count) {
+            val holder = recyclerView.findViewHolderForAdapterPosition(i) as SizeShopAdapter.MyViewHolder
+            val editText = holder.binding.lblSelect.text.toString()
+            if (editText.equals("1")){
+                sizeSelect = adapter.getItem(i)
+                break
+            }
+        }
+    }
+
+    override fun onItemClick(valueSize: Double) {
+        binding.txtTotal.text = "$ " + String.format("%.2f", valueSize)
     }
 
 }

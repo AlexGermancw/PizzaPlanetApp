@@ -88,5 +88,19 @@
         android:id="@+id/customizeSizeFragment"
         android:name="ec.edu.espe.pizzaplanetapp.ui.customizer.CustomizeSizeFragment"
         android:label="fragment_customize_size"
-        tools:layout="@layout/fragment_customize_size" />
+        tools:layout="@layout/fragment_customize_size" >
+        <action
+            android:id="@+id/action_customizeSizeFragment_to_customizeIngredientFragment"
+            app:destination="@id/customizeIngredientFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customizeIngredientFragment"
+        android:name="ec.edu.espe.pizzaplanetapp.ui.customizer.CustomizeIngredientFragment"
+        android:label="fragment_customize_ingredient"
+        tools:layout="@layout/fragment_customize_ingredient" >
+        <argument
+            android:name="size"
+            app:argType="ec.edu.espe.pizzaplanetapp.model.Size"
+            app:nullable="true" />
+    </fragment>
 </navigation>
