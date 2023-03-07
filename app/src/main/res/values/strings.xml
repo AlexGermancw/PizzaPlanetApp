@@ -40,4 +40,10 @@
     <string name="unit_value_size">Valor Tamaño $</string>
     <string name="no_size">No existen Tamaños</string>
 
+    <!--- Bill -->
+    <string name="bill">Factura</string>
+    <string name="name_client">Nombre Cliente</string>
+    <string name="identification_card_client">Cédula/RUC</string>
+    <string name="identification_example_client">1234567890</string>
+
 </resources>

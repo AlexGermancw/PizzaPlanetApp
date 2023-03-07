@@ -71,7 +71,6 @@ class SizeShopAdapter (
     }
 
 
-
     interface OnItemClickListener {
         fun onItemClick(valueSize: Double)
     }

@@ -113,11 +113,10 @@ class CustomizeSizeFragment : Fragment(), SizeShopAdapter.OnItemClickListener {
     }
 
     private fun selectSize(){
-
         val recyclerView = binding.rvSize
         val adapter = recyclerView.adapter as SizeShopAdapter
         val count = adapter.itemCount
-        val a =""
+
         for (i in 0 until count) {
             val holder = recyclerView.findViewHolderForAdapterPosition(i) as SizeShopAdapter.MyViewHolder
             val editText = holder.binding.lblSelect.text.toString()

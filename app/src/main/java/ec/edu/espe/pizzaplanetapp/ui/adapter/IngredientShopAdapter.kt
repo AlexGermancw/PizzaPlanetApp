@@ -15,6 +15,11 @@ class IngredientShopAdapter (
     private val ingredientList: List<Ingredient>,
 ) : RecyclerView.Adapter<IngredientShopAdapter.MyViewHolder>() {
 
+    private var selectOption: Boolean = true
+    private var valueSize:Double = 0.0
+
+    private var onItemClickListener: OnItemClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
             ItemIngredientAdapterBinding.inflate(
@@ -26,7 +31,6 @@ class IngredientShopAdapter (
     }
 
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
-
         viewHolder.binding.lblId.text = ingredientList.get(position).id
         //viewHolder.binding.iconImageView.setImageResource() //imagen
         viewHolder.binding.lblName.text = ingredientList.get(position).name
@@ -39,6 +43,8 @@ class IngredientShopAdapter (
                 viewHolder.binding.lblSelect.text = "1"
                 val color = ContextCompat.getColor(context, R.color.color_select)
                 viewHolder.binding.item.setBackgroundColor(color)
+                valueSize += ingredientList.get(position).unitValue
+                onItemClickListener?.onItemClick(valueSize)
             }
             else{
                 viewHolder.binding.btnRdItem.visibility= View.GONE
@@ -46,6 +52,8 @@ class IngredientShopAdapter (
                 viewHolder.binding.lblSelect.text = "0"
                 val color = ContextCompat.getColor(context, R.color.white)
                 viewHolder.binding.item.setBackgroundColor(color)
+                valueSize -= ingredientList.get(position).unitValue
+                onItemClickListener?.onItemClick(valueSize)
 
             }
         }
@@ -57,6 +65,14 @@ class IngredientShopAdapter (
 
     override fun getItemCount(): Int {
         return ingredientList.size
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(valueSize: Double)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
     }
 
     inner class MyViewHolder(val binding: ItemIngredientAdapterBinding) :

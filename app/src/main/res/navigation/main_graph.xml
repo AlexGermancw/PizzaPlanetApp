@@ -102,5 +102,22 @@
             android:name="size"
             app:argType="ec.edu.espe.pizzaplanetapp.model.Size"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_customizeIngredientFragment_to_customizeBillFragment"
+            app:destination="@id/customizeBillFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/customizeBillFragment"
+        android:name="ec.edu.espe.pizzaplanetapp.ui.customizer.CustomizeBillFragment"
+        android:label="fragment_customize_bill"
+        tools:layout="@layout/fragment_customize_bill" >
+        <argument
+            android:name="size"
+            app:argType="ec.edu.espe.pizzaplanetapp.model.Size"
+            app:nullable="true" />
+        <argument
+            android:name="ingredients"
+            app:argType="ec.edu.espe.pizzaplanetapp.model.Ingredient[]"
+            app:nullable="true" />
     </fragment>
 </navigation>
